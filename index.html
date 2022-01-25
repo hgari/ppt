@@ -45,13 +45,17 @@
     </body>
     <!-- <script src="app.js"></script> -->
     <script>
+        const optionBtn = document.querySelectorAll('div.optionBtn button');
+        
         resetBtn.addEventListener('click',() => location.reload());
 
         let choices=['Piedra','Pape','Tijera'];
 
         optionBtn.forEach(button => {
-            button.addEventListener('click',getPlayerChoice)
-        }); 
+                    button.addEventListener('click',getPlayerChoice)
+        });
+        
+; 
 
         function computerPlay(){
             return choices[Math.floor(Math.random() * choices.length)] ;
