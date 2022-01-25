@@ -67,6 +67,8 @@
         }
 
         function playRound(userChoice,cpuChoice){
+          console.log('User->'+userChoice);
+          console.log('Cpu->'+cpuChoice);
           if (userChoice==='Piedra' && cpuChoice==='Tijera'){
             playerScore++;
           }else if(userChoice==='Papel' && cpuChoice==='Piedra'){
