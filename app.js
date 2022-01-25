@@ -8,7 +8,7 @@ optionBtn.forEach(button => {
 }); 
 
 function computerPlay(){
-    return choices[Math.floor(Math.random().choices.length)] ;
+    return choices[Math.floor(Math.random() * choices.length)] ;
 }
 
 
