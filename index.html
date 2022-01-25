@@ -16,9 +16,9 @@
         
            
             <div class="optionBtn">
-              <button id="0">Rock</button>
-              <button id="1">Paper</button>
-              <button id="2">Scissors</button>
+              <button id="0">Piedra</button>
+              <button id="1">Papel</button>
+              <button id="2">Tijera</button>
             </div>
         
             <div class="labels">
@@ -46,11 +46,15 @@
     <!-- <script src="app.js"></script> -->
     <script>
         const optionBtn = document.querySelectorAll('div.optionBtn button');
+        const playerPoints = document.querySelector('playerScore')
+        const cpuPoints = document.querySelector('computerScore')
         let playerChoice = '';
+        let playerScore=0;
+        let cpuScore=0;
         
         resetBtn.addEventListener('click',() => location.reload());
 
-        let choices=['Piedra','Pape','Tijera'];
+        let choices=['Piedra','Papel','Tijera'];
 
         optionBtn.forEach(button => {
                     button.addEventListener('click',getPlayerChoice)
@@ -62,11 +66,30 @@
             return choices[Math.floor(Math.random() * choices.length)] ;
         }
 
+        function playRound(userChoice,cpuChoice){
+          if (userChoice=='Piedra' && cpuChoice=='Tijera'){
+            playerScore++;
+          }else if(userChoice=='Papel' && cpuChoice=='Piedra'){
+            playerScore++;
+          }else if(userChoice=='Tijera' && cpuChoice=='Papel'){
+            playerScore++;
+          } 
+          else if (cpuChoice=='Piedra' && userChoice=='Tijera'){
+            cpuScore++;
+          }else if(cpuChoice=='Papel' && userChoice=='Piedra'){
+            cpuScore++;
+          }else if(cpuChoice=='Tijera' && userChoice=='Papel'){
+            cpuScore++;
+          }
+          
+          cpuPoints.textContent=cpuScore;
+          playerPoints.textContent=playerScore;
+        }
 
         function getPlayerChoice(e) {
             let playerSelection= (e.target.id);
             playerChoice = e.target.textContent;
-            //playRound(playerSelection, computerPlay());
+            playRound(playerSelection, computerPlay());
         }
 
 
