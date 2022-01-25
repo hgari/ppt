@@ -99,10 +99,19 @@
           playerPoints.textContent=playerScore;
         }
 
+        function checkEndGame(){
+          if(cpuScore===5 || playerScore===5){
+            optionBtn.forEach(button => {
+              button.disabled=true;
+            });
+          }
+        }
+
         function getPlayerChoice(e) {
             let playerSelection= (e.target.id);
             playerChoice = e.target.textContent;
             playRound(playerSelection, computerPlay());
+            checkEndGame();
         }
 
 
