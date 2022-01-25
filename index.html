@@ -48,6 +48,7 @@
         const optionBtn = document.querySelectorAll('div.optionBtn button');
         const playerPoints = document.querySelector('#playerScore')
         const cpuPoints = document.querySelector('#computerScore')
+        const roundResults = document.querySelector('#roundResults')
         let playerChoice = '';
         let playerScore=0;
         let cpuScore=0;
@@ -67,23 +68,33 @@
         }
 
         function playRound(userChoice,cpuChoice){
+          let ganadorRonda='';
           console.log('User->'+userChoice);
           console.log('Cpu->'+cpuChoice);
           if (userChoice==='Piedra' && cpuChoice==='Tijera'){
             playerScore++;
+            ganadorRonda='Player';
           }else if(userChoice==='Papel' && cpuChoice==='Piedra'){
             playerScore++;
+            ganadorRonda='Player';
           }else if(userChoice==='Tijera' && cpuChoice==='Papel'){
             playerScore++;
+            ganadorRonda='Player';
           } 
           else if (cpuChoice==='Piedra' && userChoice==='Tijera'){
             cpuScore++;
+            ganadorRonda='Cpu';
           }else if(cpuChoice==='Papel' && userChoice==='Piedra'){
             cpuScore++;
+            ganadorRonda='Cpu';
           }else if(cpuChoice==='Tijera' && userChoice==='Papel'){
             cpuScore++;
+            ganadorRonda='Cpu';
           }
-          
+          else{
+            ganadorRonda='Empate'
+          }
+          roundResults.textContent='User->'+userChoice+' vs Cpu->'+cpuChoice+ ' Ganador Ronda'+ganadorRonda;
           cpuPoints.textContent=cpuScore;
           playerPoints.textContent=playerScore;
         }
